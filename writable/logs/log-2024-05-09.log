@@ -1,0 +1,26 @@
+CRITICAL - 2024-05-09 18:03:13 --> ErrorException: Undefined variable $personnes
+[Method: GET, Route: listedescontactes]
+in APPPATH\Views\listedescontactes.php on line 46.
+ 1 APPPATH\Views\listedescontactes.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $personnes', 'C:\\xampp\\htdocs\\project-root\\app\\Views\\listedescontactes.php', 46)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\project-root\\app\\Views\\listedescontactes.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('listedescontactes', [], true)
+ 5 APPPATH\Controllers\Listedescontactes.php(9): view('listedescontactes')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Listedescontactes->listedescontactes()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Listedescontactes))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-05-09 18:29:50 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "create.php"
+[Method: GET, Route: create]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('create.php')
+ 2 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('create', [], true)
+ 3 APPPATH\Controllers\Create.php(9): view('create')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Create->create()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Create))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
