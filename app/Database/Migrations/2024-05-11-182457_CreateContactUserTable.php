@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class CreateContactUserTable extends Migration
 {
     public function up()
     {
@@ -16,7 +16,11 @@ class CreateUsersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'username' => [
+            'nom' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+            ],
+            'prenom' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
@@ -28,6 +32,22 @@ class CreateUsersTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'adresse' => [ 
+                'type'       => 'VARCHAR',
+                'constraint' => '255', 
+            ],
+            'code_postal' => [ 
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
+            ],
+            'numero_telephone' => [ 
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
+            ],
+            'autre_numero' => [ 
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
@@ -38,11 +58,12 @@ class CreateUsersTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('users'); // Utilisation du nom correct de la table
+        $this->forge->createTable('contact_user_table'); // Changement du nom de la table
+
     }
 
     public function down()
     {
-        $this->forge->dropTable('users'); // Utilisation du nom correct de la table
+        $this->forge->dropTable('contact-user-table');
     }
 }

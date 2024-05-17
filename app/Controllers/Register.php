@@ -2,21 +2,41 @@
 
 namespace App\Controllers;
 
-class Register extends BaseController
+use App\Models\UserModel;
+use CodeIgniter\Controller;
+
+class Register extends Controller
 {
     public function register()
     {
-        return view('register');
+        return view('persons/register_form');
     }
 
-    public function alert()
+    public function save()
     {
-        // Votre logique pour valider et ajouter l'utilisateur
+        $validationRules = [
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'email'      => 'required|valid_email',
+            'password'   => 'required'
+        ];
 
-        // Ajouter un message flash pour indiquer que l'inscription a réussi
-        session()->setFlashdata('success', 'Inscription réussie !');
+        if (!$this->validate($validationRules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
 
-        // Rediriger vers une autre page ou afficher une vue
-        return redirect()->to('Login');
+        $userModel = new UserModel();
+
+        $data = [
+            'username'  => $this->request->getPost('username'),
+            'email'     => $this->request->getPost('email'),
+            'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s')
+        ];
+
+        $userModel->insert($data);
+
+        return redirect()->to('/login')->with('success', 'Compte créé avec succès.');
     }
 }

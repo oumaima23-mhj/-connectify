@@ -1,18 +1,13 @@
-<!-- app/Views/home.php -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Website</title>
-    <!-- Add your CSS links here -->
+    <title>Bienvenue sur Connectify</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Add your CSS styles here */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #3498db; /* Blue background */
-            color: #000; /* Black text */
+            background-image: url("bg.jpeg");
         }
         .container {
             max-width: 800px;
@@ -29,8 +24,8 @@
             padding: 10px 0;
         }
         button {
-            background-color: #fff; /* White button background */
-            color: #3498db; /* Blue button text color */
+            background-color: #fff;
+            color: #3498db;
             border: none;
             padding: 10px 20px;
             margin: 5px;
@@ -41,16 +36,18 @@
     </style>
 </head>
 <body>
-
 <div class="container">
-    <h1>bienvenu sur notre application Connectify</h1>
-    <a href="<?php echo base_url('register'); ?>"><button>cree un compte</button></a>
-    <a href="<?php echo base_url('login'); ?>"><button>connecte</button></a>
+    <h1>Bienvenue sur notre application Connectify</h1>
+    <a href="<?= base_url('persons/register_form'); ?>"><button class="btn btn-primary">Créer un compte</button></a>
+<a href="<?= base_url('Login'); ?>"><button class="btn btn-success">Se connecter</button></a>
+ 
+<form action="<?= base_url('logout'); ?>" method="post" style="display: inline;">
+        <button type="submit" class="btn btn-danger">Se déconnecter</button>
+    </form>
 </div>
 
 <div class="footer">
-    <p>&copy; <?php echo date("Y"); ?> Connectify. All Rights Reserved.</p>
+    <p>&copy; <?= date("Y"); ?> Connectify. Tous droits réservés.</p>
 </div>
-
 </body>
 </html>
