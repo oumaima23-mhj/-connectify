@@ -28,7 +28,8 @@ class Register extends Controller
         $userModel = new UserModel();
 
         $data = [
-            'username'  => $this->request->getPost('username'),
+            'first_name'  => $this->request->getPost('first_name'),
+            'last_name'  => $this->request->getPost('last_name'),
             'email'     => $this->request->getPost('email'),
             'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'created_at'=> date('Y-m-d H:i:s'),

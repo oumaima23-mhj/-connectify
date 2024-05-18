@@ -4,49 +4,44 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateContactUserTable extends Migration
+class CreatePersonnesTable extends Migration
 {
     public function up()
     {
-        // Ajout des colonnes existantes
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true,
                 'auto_increment' => true,
             ],
             'nom' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'type' => 'VARCHAR',
+                'constraint' => '50',
             ],
             'prenom' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'type' => 'VARCHAR',
+                'constraint' => '50',
+            ],
+            'pays' => [
+                'type' => 'VARCHAR',
+                'constraint' => '50',
+            ],
+            'ville' => [
+                'type' => 'VARCHAR',
+                'constraint' => '50',
+            ],
+            'code_postal' => [
+                'type' => 'VARCHAR',
+                'constraint' => '10',
             ],
             'email' => [
-                'type'       => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'password' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
-            'adresse' => [ 
-                'type'       => 'VARCHAR',
-                'constraint' => '255', 
-            ],
-            'code_postal' => [ 
-                'type'       => 'VARCHAR',
-                'constraint' => '20',
-            ],
-            'numero_telephone' => [ 
-                'type'       => 'VARCHAR',
-                'constraint' => '20',
-            ],
-            'autre_numero' => [ 
-                'type'       => 'VARCHAR',
-                'constraint' => '20',
+            'numero_telephone' => [
+                'type' => 'VARCHAR',
+                'constraint' => '15',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -56,14 +51,18 @@ class CreateContactUserTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'deleted_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
-        $this->forge->addKey('id', true);
-        $this->forge->createTable('contact_user_table'); // Changement du nom de la table
 
+        $this->forge->addKey('id', true);
+        $this->forge->createTable('personnes');
     }
 
     public function down()
     {
-        $this->forge->dropTable('contact-user-table');
+        $this->forge->dropTable('personnes');
     }
 }

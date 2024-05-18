@@ -38,10 +38,10 @@
 <body>
 <div class="container">
     <h1>Bienvenue sur notre application Connectify</h1>
-    <a href="<?= base_url('persons/register_form'); ?>"><button class="btn btn-primary">Créer un compte</button></a>
-<a href="<?= base_url('Login'); ?>"><button class="btn btn-success">Se connecter</button></a>
+    <a href="/persons/register_form"><button class="btn btn-primary">Créer un compte</button></a>
+<a href="/login"><button class="btn btn-success">Se connecter</button></a>
  
-<form action="<?= base_url('logout'); ?>" method="post" style="display: inline;">
+<form action="/logout" method="post" style="display: inline;">
         <button type="submit" class="btn btn-danger">Se déconnecter</button>
     </form>
 </div>

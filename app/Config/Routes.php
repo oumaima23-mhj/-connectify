@@ -23,8 +23,6 @@ $routes->post('login/authenticate', 'Login::authenticate');
 
 // Route pour traiter la déconnexion
 $routes->post('logout', 'Logout::logout');
-$routes->get('test', 'Test::test1');
-$routes->get('test2', 'Test2::test2'); //5anemchi lel wc w nji behy
 // Groupe de routes pour les personnes (contacts)
     $routes->get('liste', 'Personnes::liste'); // Afficher la liste des personnes
     $routes->get('detail/(:num)', 'Personnes::detail/$1'); // Voir les détails d'une personne

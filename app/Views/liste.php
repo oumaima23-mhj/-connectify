@@ -8,6 +8,9 @@
 <body>
     <h1>Liste des personnes</h1>
     <table class="table">
+    <div class="mb-3">
+            <a href="/ajouter" class="btn btn-primary">Créer un nouveau contact</a>
+        </div>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -24,14 +27,14 @@
                     <td><?= $personne->prenom ?></td>
                     <td>
                         <div class="d-flex flex-row">
-                            <form class="mx-1" action="<?= site_url('personnes/Detail/'.$personne->id) ?>" method="get">
+                            <form class="mx-1" action="/Detail/'.$personne->id)" method="get">
                                 <input class="btn btn-primary" type="submit" value="Voir détail"/>
                             </form>
-                            <form class="mx-1" action="<?= site_url('personnes/supprimer/'.$personne->id) ?>" method="post">
+                            <form class="mx-1" action="/supprimer/'.$personne->id)" method="post">
                                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                                 <input class="btn btn-danger" type="submit" value="Supprimer"/>
                             </form>
-                            <form class="mx-1" action="<?= site_url('personnes/modifier/'.$personne->id) ?>" method="get">
+                            <form class="mx-1" action="/modifier/'.$personne->id)" method="get">
                                 <input class="btn btn-warning" type="submit" value="Modifier"/>
                             </form>
                         </div>

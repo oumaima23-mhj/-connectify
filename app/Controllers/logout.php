@@ -9,9 +9,10 @@ class Logout extends Controller
     public function logout()
     {
         // Détruire la session
-        session()->destroy();
+        $session = session();
+        $session->destroy();
         
         // Rediriger vers la page de connexion avec un message de succès
-        return redirect()->to('/login')->with('success', 'Vous avez été déconnecté avec succès.');
+        return redirect()->to('/login')->with('message', 'Déconnexion réussie.');
     }
 }

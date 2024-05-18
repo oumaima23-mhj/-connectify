@@ -1,22 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Liste des personnes - CodeIgniter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ajouter un Contact</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Ajouter un Contact</h2>
+        <?php if (session()->getFlashdata('error')) : ?>
+            <div class="alert alert-danger">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
+        <form action="<?= site_url('personcontroller/ajouter') ?>" method="post">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="pays">Pays</label>
+                <input type="text" class="form-control" id="pays" name="pays" required>
+            </div>
+            <div class="form-group">
+                <label for="ville">Ville</label>
+                <input type="text" class="form-control" id="ville" name="ville" required>
+            </div>
+            <div class="form-group">
+                <label for="code_postal">Code Postal</label>
+                <input type="text" class="form-control" id="code_postal" name="code_postal" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="numero_telephone">Numéro de Téléphone</label>
+                <input type="text" class="form-control" id="numero_telephone" name="numero_telephone" required>
+            </div>
+            <div class="mb-3">
+            <a href="/liste" class="btn btn-primary">Enregistrer</a>
+        </div>
+        </form>
+    </div>
 
-    <h1>Ajouter une personne</h1>
-    <form action="<?= site_url('personnes/ajouter') ?>" method="POST">
-        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
-        <label for="nom">Nom :</label>
-        <input id="nom" name="nom"/>
-        <label for="prenom">Prénom :</label>
-        <input id="prenom" name="prenom"/>
-        <a href="<?= base_url('personnes/liste'); ?>"><input class="btn btn-primary" type="submit" value="Ajouter"></a>
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -18,6 +18,6 @@
     <p><?php echo $person->code; ?></p>
     <!-- Autres détails de la personne -->
 
-    <a href="<?= base_url('personnes/ajouter') ?>">Retour à la liste des contactes</a>
+    <a href="/ajouter"><button>Retour à la liste des contactes</button></a>
 </body>
 </html>
