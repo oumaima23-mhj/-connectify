@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Modifier personne</h1>
-    <form action="<?= site_url('modifier/update/'.$personne->id) ?>" method="POST">
+    <form action="/modifier/update/'.$personne->id) ?>" method="POST">
         <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
         <label for="nom">Nom :</label>
         <input id="nom" name="nom" value="<?= $personne->nom ?>"/>

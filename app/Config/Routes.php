@@ -13,7 +13,7 @@ $routes->get('/', 'Home::index');
 $routes->get('persons/register_form', 'Register::register');
 
 // Route pour traiter l'inscription
-$routes->post('persons/register_form/save', 'Register::save');
+$routes->post('register/save', 'Register::save');
 
 // Route pour afficher le formulaire de connexion
 $routes->get('login', 'Login::login');

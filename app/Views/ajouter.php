@@ -14,7 +14,12 @@
                 <?= session()->getFlashdata('error') ?>
             </div>
         <?php endif; ?>
-        <form action="<?= site_url('personcontroller/ajouter') ?>" method="post">
+        <?php if (session()->getFlashdata('success')) : ?>
+            <div class="alert alert-success">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php endif; ?>
+        <form action="<?= base_url('/ajouter') ?>" method="post">
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>
@@ -44,8 +49,9 @@
                 <input type="text" class="form-control" id="numero_telephone" name="numero_telephone" required>
             </div>
             <div class="mb-3">
-            <a href="/liste" class="btn btn-primary">Enregistrer</a>
-        </div>
+                
+                <a href="/liste" class="btn btn-success">Enregistrer</a>
+            </div>
         </form>
     </div>
 

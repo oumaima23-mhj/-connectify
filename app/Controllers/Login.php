@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
-use App\Models\LoginModel;
+use App\Models\UserModel;
 use CodeIgniter\Controller;
 
 class Login extends BaseController
@@ -12,39 +11,53 @@ class Login extends BaseController
         return view('login');
     }
 
-    public function authenticate()
-    {
-        // Validation des données du formulaire
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+  
+        public function authenticate()
+        {
+            $data = [];
+            helper(['form']);
+    
+            if ($this->request->getMethod() == 'post') {
+                // Validation
+                $rules = [
+                    'email' => 'required|valid_email',
+                    'password' => 'required|min_length[6]|validateUser[email,password]',
+                ];
+    
+                $errors = [
+                    'password' => [
+                        'validateUser' => 'Email or Password do not match'
+                    ]
+                ];
+    
+                if (!$this->validate($rules, $errors)) {
+                    $data['validation'] = $this->validator;
+                } else {
+                    // Set the user session
+                    $userModel = new UserModel();
+                    $user = $userModel->where('email', $this->request->getPost('email'))->first();
+    
+                    $this->setUserSession($user);
+    
+                    return redirect()->route('liste');
+                }
+            }
+    
+            return view('login', $data);
         }
-
-        $username = $this->request->getPost('username');
-        $password = $this->request->getPost('password');
-
-        // Charger le modèle
-        $loginModel = new LoginModel();
-        $user = $loginModel->where('username', $username)->first();
-
-        // Vérification des informations d'identification
-        if ($user && password_verify($password, $user['password'])) {
-            // Démarrer la session
-            $session = session();
-            $session->set([
-                'user_id' => $user['id'],
-                'username' => $user['username'],
-                'isLoggedIn' => true
-            ]);
-
-            return redirect()->to('/')->with('success', 'Connexion réussie.');
-        } else {
-            return redirect()->back()->withInput()->with('error', 'Nom d\'utilisateur ou mot de passe incorrect.');
+    
+        private function setUserSession($user)
+        {
+            $data = [
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'first_name' => $user['first_name'],
+                'last_name' => $user['last_name'],
+                'isLoggedIn' => true,
+            ];
+    
+            session()->set($data);
+            return true;
         }
     }
-}
+    

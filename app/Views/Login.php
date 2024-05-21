@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -13,13 +12,13 @@
         }
         .container {
             max-width: 500px;
-            margin: 0 auto;
+            margin: 50px auto;
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
@@ -37,11 +36,14 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2 align="center">Formulaire de Connexion</h2>
+    <h2 class="text-center">Formulaire de Connexion</h2>
 
     <?php if (session()->has('error')): ?>
         <div class="alert alert-danger">
@@ -55,14 +57,24 @@
         </div>
     <?php endif; ?>
 
-    <form action="<?= base_url('login/authenticate'); ?>" method="post">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="username" required>
+    <?php if (isset($validation)): ?>
+        <div class="alert alert-danger">
+            <?= $validation->listErrors() ?>
+        </div>
+    <?php endif; ?>
+
+    <form action='authenticate' method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Adresse email :</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
         
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe :</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div>
         
-        <a href="<?= base_url('personnes/liste'); ?>"><input type="submit" value="Connexion"></a>
+        <a href="/liste" class="btn btn-primary">connexion</a>
     </form>
 </div>
 </body>

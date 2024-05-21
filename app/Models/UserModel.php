@@ -9,6 +9,18 @@ class UserModel extends Model
     protected $table = 'users';
     protected $primaryKey = 'id';
     protected $allowedFields = ['first_name', 'last_name', 'email', 'password'];
+    protected $useTimestamps = true;  
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    protected $beforeInsert = ['hashPassword'];
+    protected $beforeUpdate = ['hashPassword'];
 
-    // Supprimez les méthodes insertUser et getUserByEmail car elles ne sont pas nécessaires ici.
+    // This function will hash the password before saving it to the database
+    protected function hashPassword(array $data)
+    {
+        if (isset($data['data']['password'])) {
+            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+        }
+        return $data;
+    }
 }
