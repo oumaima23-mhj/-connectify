@@ -1,0 +1,21 @@
+CRITICAL - 2024-05-23 11:28:21 --> Error: Class "App\Validation\UserRules" not found
+[Method: POST, Route: register/save]
+in SYSTEMPATH\Validation\Validation.php on line 724.
+ 1 SYSTEMPATH\Validation\Validation.php(125): CodeIgniter\Validation\Validation->loadRuleSets()
+ 2 SYSTEMPATH\Config\Services.php(826): CodeIgniter\Validation\Validation->__construct(Object(Config\Validation), Object(CodeIgniter\View\View))
+ 3 SYSTEMPATH\Config\BaseService.php(311): CodeIgniter\Config\Services::validation(Object(Config\Validation), false)
+ 4 SYSTEMPATH\Config\BaseService.php(250): CodeIgniter\Config\BaseService::__callStatic('validation', [...])
+ 5 SYSTEMPATH\Config\Services.php(821): CodeIgniter\Config\BaseService::getSharedInstance('validation', null)
+ 6 SYSTEMPATH\Config\BaseService.php(320): CodeIgniter\Config\Services::validation()
+ 7 SYSTEMPATH\Config\BaseService.php(201): CodeIgniter\Config\BaseService::__callStatic('validation', [])
+ 8 SYSTEMPATH\Common.php(998): CodeIgniter\Config\BaseService::get('validation')
+ 9 SYSTEMPATH\Controller.php(160): service('validation')
+10 SYSTEMPATH\Controller.php(135): CodeIgniter\Controller->setValidator([...], [])
+11 APPPATH\Controllers\Register.php(24): CodeIgniter\Controller->validate([...])
+12 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Register->save()
+13 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Register))
+14 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+16 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+17 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+18 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\project-root\\-connectify\\public\\index.php')

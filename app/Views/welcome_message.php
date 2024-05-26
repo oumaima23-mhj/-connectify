@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-image: url("bg.jpeg");
+            background-image: url("bng");
         }
         .container {
             max-width: 800px;
@@ -40,10 +40,7 @@
     <h1>Bienvenue sur notre application Connectify</h1>
     <a href="/persons/register_form"><button class="btn btn-primary">Créer un compte</button></a>
 <a href="/login"><button class="btn btn-success">Se connecter</button></a>
- 
-<form action="/logout" method="post" style="display: inline;">
-        <button type="submit" class="btn btn-danger">Se déconnecter</button>
-    </form>
+
 </div>
 
 <div class="footer">

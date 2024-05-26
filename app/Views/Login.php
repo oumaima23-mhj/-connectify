@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -74,8 +75,8 @@
             <input type="password" id="password" name="password" class="form-control" required>
         </div>
         
-        <a href="/liste" class="btn btn-primary">connexion</a>
-    </form>
+        <a href="personnes/liste" class="btn btn-primary">Connexion</a>
+        </form>
 </div>
 </body>
 </html>

@@ -5,7 +5,6 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-
 // Route pour la page d'accueil
 $routes->get('/', 'Home::index');
 
@@ -22,12 +21,14 @@ $routes->get('login', 'Login::login');
 $routes->post('login/authenticate', 'Login::authenticate');
 
 // Route pour traiter la déconnexion
-$routes->post('logout', 'Logout::logout');
-// Groupe de routes pour les personnes (contacts)
-    $routes->get('liste', 'Personnes::liste'); // Afficher la liste des personnes
-    $routes->get('detail/(:num)', 'Personnes::detail/$1'); // Voir les détails d'une personne
-    $routes->get('modifier/(:num)', 'Personnes::edit/$1'); // Afficher le formulaire de modification d'une personne
-    $routes->post('modifier/(:num)', 'Personnes::update/$1'); // Soumettre le formulaire de modification d'une personne
-    $routes->post('supprimer/(:num)', 'Personnes::delete/$1'); // Supprimer une personne
-    $routes->get('ajouter', 'Personnes::add'); // Afficher le formulaire d'ajout d'une personne
-    $routes->post('ajouter', 'Personnes::save'); // Soumettre le formulaire d'ajout d'une personne;
+$routes->get('logout', 'Login::logout');
+
+// Routes pour les personnes
+$routes->get('personnes/liste', 'Personnes::liste');
+$routes->get('personnes/ajouter', 'Personnes::ajouter');
+$routes->post('personnes/store', 'Personnes::store');
+$routes->get('personnes/modifier/(:num)', 'Personnes::modifier/$1');
+$routes->post('personnes/update/(:num)', 'Personnes::update/$1');
+$routes->get('personnes/detail/(:num)', 'Personnes::detail/$1');
+$routes->get('personnes/supprimer/(:num)', 'Personnes::supprimer/$1');
+$routes->get('personnes/confirmer_suppression/(:num)', 'Personnes::confirmer_suppression/$1');

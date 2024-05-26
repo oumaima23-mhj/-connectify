@@ -34,7 +34,7 @@
                 <label for="password">Mot de passe:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary">S'inscrire</button>
+            <a href="/login" class="btn btn-primary">s'inscrire</a>
         </form>
         <p class="mt-3">Déjà inscrit? <a href="/login">Connectez-vous ici</a>.</p>
     </div>
